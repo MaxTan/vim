@@ -1,6 +1,5 @@
-vim80/*
-vimfile/
-!vim80/vimtweak.dll
 *.swp
+.vim/bundle/
+
 
 

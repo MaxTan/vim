@@ -42,6 +42,7 @@ set fileencodings=utf-8,gbk,chinese
 
 " tab键4个空格
 set ts=4
+set expandtab
 
 " 开起行号
 set number
@@ -60,9 +61,17 @@ set hlsearch
 
 " 设置游标
 set cursorline
+set cursorcolumn
+
+"显示行尾空格
+set list
+set listchars=tab:>-,trail:.,extends:#,nbsp:-
 
 " 配置字体
 set guifont=Monaco:h11
+
+" 取消自动折行
+set nowrap
 
 " 配置主题色
 syntax on
@@ -70,7 +79,7 @@ set background=light
 colorscheme onedark
 let g:lightline = {
     \ 'colorscheme':'onedark'
-    \ }
+	\ }
 let g:airline_theme='onedark'
 let g:laststatus=2
 

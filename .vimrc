@@ -19,6 +19,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+"Plugin 'Valloric/YouCompleteMes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -113,7 +114,7 @@ set noshowmode
 
 
 " 启动时打开NERDTree
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 
 " 修改配置文件后自动加载
 autocmd! bufwritepost .vimrc source ~\.vimrc
@@ -122,3 +123,5 @@ autocmd! bufwritepost .vimrc source ~\.vimrc
 "
 "切换窗口映射成mm
 nnoremap mm <C-W><C-W>
+
+nnoremap -b :exe 'NERDTreeToggle'<CR>

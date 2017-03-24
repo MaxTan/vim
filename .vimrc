@@ -1,5 +1,5 @@
 " 添加vim运行时路径
-set runtimepath+=$HOME/.vim
+set runtimepath+=~/.vim
 
 " Vundle插件配置
 
@@ -7,7 +7,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=$HOME/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -40,28 +40,34 @@ filetype plugin indent on    " required
 " 解决中文乱码问题 
 set fileencodings=utf-8,gbk,chinese
 
-" tab键4个空格
-set ts=4
-set expandtab
-
-" 开起行号
-set number
-
-" 自动选择对齐方式
-set autoindent
-
-" 设置自动匹配模式
+" 设置智能缩进
 set smartindent
 
+" tab键4个空格
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+
+" 光标移动括号时高亮显示匹配的括号
+set showmatch
+
+" 开启行号
+set number
+
+
 " 设置实时搜索
-set incsearch
+ set incsearch
 
 " 高亮显示搜索结果
 set hlsearch
 
 " 设置游标
+set t_Co=256
 set cursorline
 set cursorcolumn
+"highlight CursorLine cterm=none ctermbg=236 guibg=red
+"highlight CursorColumn cterm=none ctermbg=236 guibg=red
 
 "显示行尾空格
 set list
@@ -74,20 +80,22 @@ set guifont=Monaco:h11
 set nowrap
 
 " 配置主题色
+
 syntax on
 set background=light
 colorscheme onedark
 let g:lightline = {
     \ 'colorscheme':'onedark'
-	\ }
+    \ }
 let g:airline_theme='onedark'
 let g:laststatus=2
+
 
 
 " gvim透明度
 if executable("vimtweak.dll")
     autocmd guienter * call libcallnr("vimtweak","SetAlpha",240)
-    autocmd guienter * call libcallnr("vimtweak","EnableMaximize",1)
+    "autocmd guienter * call libcallnr("vimtweak","EnableMaximize",1)
 endif
 
 if has("gui_running")
@@ -100,10 +108,17 @@ if has("gui_running")
     "set showtabline=0 " 隐藏Tab栏
 endif
 
-
 " 不显示vim编辑模式
 set noshowmode
 
 
 " 启动时打开NERDTree
 autocmd vimenter * NERDTree
+
+" 修改配置文件后自动加载
+autocmd! bufwritepost .vimrc source ~\.vimrc
+
+" 键盘映射
+"
+"切换窗口映射成mm
+nnoremap mm <C-W><C-W>

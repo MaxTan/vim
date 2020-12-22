@@ -1,4 +1,4 @@
-拉取子模块的Vundel
+拉取子模块的Vundle
 ```
 git submodule update --init --recursive
 ```

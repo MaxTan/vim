@@ -7,7 +7,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/home/max/source/vim/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -99,6 +99,7 @@ if executable("vimtweak.dll")
     "autocmd guienter * call libcallnr("vimtweak","EnableMaximize",1)
 endif
 
+" gvim专用
 if has("gui_running")
     "au GUIEnter * simalt ~x " 窗口启动时自动最大化
     set guioptions-=m " 隐藏菜单栏
@@ -108,6 +109,13 @@ if has("gui_running")
     "set guioptions-=b " 隐藏底部滚动条
     "set showtabline=0 " 隐藏Tab栏
 endif
+
+" windows terminal 鼠标方块
+if &term =~ '^xterm'
+    let &t_SI .= "\<Esc>[5 q"
+    let &t_EI .= "\<Esc>[2 q"
+endif
+
 
 " 不显示vim编辑模式
 set noshowmode
